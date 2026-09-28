@@ -2,4 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("csci 8250 - trip planner")
+    return render(request, "base.html", {"message": "csci 8250 - trip planner"})
+    # return HttpResponse("csci 8250 - trip planner")
+
+
+
+def about(request):
+    return render(request, "about.html")
+

@@ -1,0 +1,18 @@
+body {
+  background-color: #141414;
+  color: rgba(255, 255, 255, 0.9);
+  -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+    opacity: 0.6;
+}
+
+.hover-card {
+  border: 1px solid #dee2e6; /* default Bootstrap border */
+  transition: all 0.2s ease;
+}
+
+.hover-card:hover {
+  border: 2px solid var(--bs-primary);
+}
