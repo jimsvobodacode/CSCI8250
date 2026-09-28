@@ -3,3 +3,5 @@
 # python manage.py startapp website  
 django
 django-htmlmin
+openai
+openai-agents
