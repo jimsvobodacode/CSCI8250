@@ -25,3 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about', about),
 ]
+
+
+handler404 = "website.views.redirect_404"

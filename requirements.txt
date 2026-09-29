@@ -5,3 +5,4 @@ django
 django-htmlmin
 openai
 openai-agents
+whitenoise

@@ -10,3 +10,8 @@ def index(request):
 def about(request):
     return render(request, "about.html")
 
+
+from django.shortcuts import redirect
+def redirect_404(request, exception):
+    return redirect("/")   # name of your home URL
+
