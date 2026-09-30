@@ -1,10 +1,19 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def index(request):
-    return render(request, "index.html", {"message": "csci 8250 - trip planner"})
-    # return HttpResponse("csci 8250 - trip planner")
+from website.forms import IndexForm
+from website.agentic_ai import AgenticAI
 
+def index(request):
+    if request.method == "POST":
+        form = IndexForm(request.POST)
+        if form.is_valid():
+            prompt = form.cleaned_data["prompt"]
+            ai = AgenticAI()
+            ai.Process(prompt)
+    else:
+        form = IndexForm()
+    return render(request, "index.html", {"form": form})
 
 
 def about(request):

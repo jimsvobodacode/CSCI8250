@@ -4,13 +4,40 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+    
         {
-            "name": "Python Debugger: Current File",
+            "name": "Python Debugger: Django",
             "type": "debugpy",
             "request": "launch",
-            "program": "agentic_ai/app.py",
-            "console": "integratedTerminal"
+            "program": "${workspaceFolder}\\trip_planner\\manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true,
+            "serverReadyAction": {
+            "action": "debugWithChrome",
+            "pattern": ".*http://127.0.0.1:(\\d*).*",
+            "uriFormat": "http://127.0.0.1:%s"}
         }
     ]
 }
+
+
+
+
+// {
+//     // Use IntelliSense to learn about possible attributes.
+//     // Hover to view descriptions of existing attributes.
+//     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+
+//         {
+//             "name": "Python Debugger: Current File",
+//             "type": "debugpy",
+//             "request": "launch",
+//             "program": "agentic_ai/app.py",
+//             "console": "integratedTerminal"
+//         }
+//     ]
+// }

@@ -2,8 +2,19 @@
 
 {% block content %}
 
-<h1>CSCI 8250!</h1>
+<h4>Trip Planner</h4>
 
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div id="promptDiv" class="col-8 d-flex align-items-center">
+            <input type="text" id="prompt" name="prompt" class="form-control" required="required" placeholder="What kind of trip would you like to take?">
+        </div>
+        <div class="col-1">
+            <button id="btnsubmit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
 
 
 {% endblock %}
