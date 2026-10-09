@@ -30,6 +30,12 @@
                             </button>
                             <!-- Dropdown menu -->
                             <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <form method="post" action="{% url 'new_session' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="dropdown-item">New session</button>
+                                    </form>
+                                </li>
                                 <li><a class="dropdown-item" href="/about">About</a></li>
                             </ul>
                         </div>

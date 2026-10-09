@@ -1,0 +1,16 @@
+{% if form.errors %}
+    {{ form.errors }}
+{% endif %}
+{% if profile is not None %}
+<div style="min-height: 50vh; display: flex; flex-direction: column;">
+    <div>
+        {{ profile.ctrl_instructions }}<br>
+    </div>
+    <div style="border: 1px solid white; margin-top: auto; padding: 1rem;">
+        <h4 style="font-size: 0.875rem;">DIAGNOSTICS</h4>
+        CTRL_STATUS: {{ profile.ctrl_status }}<br>
+        DATA_CITY: {{ profile.data_city }}<br>
+        DATA_BUDGET: {{ profile.data_budget }}<br>
+    </div>
+</div>
+{% endif %}

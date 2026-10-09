@@ -1,3 +1,7 @@
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: #141414;
   color: rgba(255, 255, 255, 0.9);
@@ -15,4 +19,16 @@ body {
 
 .hover-card:hover {
   border: 2px solid var(--bs-primary);
+}
+
+#spinner {
+  display: none;
+}
+
+#spinner.htmx-request {
+  display: block;
+}
+
+#spinner.htmx-request ~ #results {
+  display: none;
 }

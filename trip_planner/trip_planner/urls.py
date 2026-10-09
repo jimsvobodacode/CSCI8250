@@ -18,10 +18,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from website.views import index, about
+from website.views import index, about, aisession, new_session
 
 urlpatterns = [
     path('', index),
+    path('aisession/', aisession, name='aisession'),
+    path('new-session/', new_session, name='new_session'),
     path('admin/', admin.site.urls),
     path('about', about),
 ]

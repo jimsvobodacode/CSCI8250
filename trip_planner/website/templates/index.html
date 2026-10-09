@@ -4,7 +4,8 @@
 
 <h4>Trip Planner</h4>
 
-<form method="post">
+<form method="post" hx-post="{% url 'aisession' %}" hx-target="#results" hx-swap="innerHTML" hx-indicator="#spinner"
+      hx-on::after-request="if (event.detail.successful) { const prompt = this.querySelector('#prompt'); prompt.value = ''; prompt.placeholder = ''; }">
     {% csrf_token %}
     <div class="row">
         <div id="promptDiv" class="col-8 d-flex align-items-center">
@@ -15,6 +16,16 @@
         </div>
     </div>
 </form>
+
+<div class="row pt-3">
+    <span id="spinner" class="htmx-indicator">
+            <span class="spinner-border spinner-border-sm"></span>
+            Processing...
+    </span>
+    <div id="results">
+        {% include "results.html" %}
+    </div>
+</div>
 
 
 {% endblock %}
