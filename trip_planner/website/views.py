@@ -18,12 +18,13 @@ def aisession(request):
         ai = AgenticAI()
         ai.Process(get_conversation_id(request), form.cleaned_data["prompt"])
         profile = ai.Profile
-    return render(request, "results.html", {"form": form, "profile": profile})
+        plan = ai.PlanItems
+    return render(request, "results.html", {"form": form, "profile": profile, "plan": plan})
 
 @require_POST
 def new_session(request):
     request.session.pop("agent_conversation_id", None)
-    get_conversation_id(request)
+    # get_conversation_id(request)
     return redirect("/")
 
 

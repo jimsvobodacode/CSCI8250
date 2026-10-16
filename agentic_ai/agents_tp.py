@@ -6,6 +6,7 @@ class TripProfile(BaseModel):
     ctrl_instructions: str
     data_city: str
     data_budget: str
+    data_interests: list[str]
 
 
 # start input guardrail
@@ -43,6 +44,8 @@ profile_agent = Agent(
         "Ask questions ONE AT A TIME until all of the following fields are known:\n"
         "- Destination city\n"
         "- Total budget in USD\n"
+        "- Interests\n"
+        "Multiple Interests can be provided\n"
         "Consolidated details into a TripProfile object.\n"
         "Additional instructions should be placed in the ctrl_instructions field\n"
         "If you have all the necessary information ctrl_status should be COMPLETE, otherwise ctrl_status is NOTCOMPLETE."
