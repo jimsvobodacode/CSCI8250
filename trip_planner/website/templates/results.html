@@ -1,16 +1,32 @@
 {% if form.errors %}
     {{ form.errors }}
 {% endif %}
-{% if profile is not None %}
-<div style="min-height: 50vh; display: flex; flex-direction: column;">
-    <div>
+<div style="min-height: 30vh; display: flex; flex-direction: column;">
+    {% if profile is not None %}
         {{ profile.ctrl_instructions }}<br>
-    </div>
-    <div style="border: 1px solid white; margin-top: auto; padding: 1rem;">
-        <h4 style="font-size: 0.875rem;">DIAGNOSTICS</h4>
-        CTRL_STATUS: {{ profile.ctrl_status }}<br>
-        DATA_CITY: {{ profile.data_city }}<br>
-        DATA_BUDGET: {{ profile.data_budget }}<br>
+    {% endif %}
+</div>
+<div style="border: 1px solid white; margin-top: auto; padding: 1rem;">
+    <h4 style="font-size: 0.875rem;">DIAGNOSTICS</h4>
+    {% if profile is not None %}
+        <div>
+            CTRL_INSTRUCTIONS: {{ profile.ctrl_instructions }}<br>
+            CTRL_STATUS: {{ profile.ctrl_status }}<br>
+            DATA_CITY: {{ profile.data_city }}<br>
+            DATA_BUDGET: {{ profile.data_budget }}<br>
+            DATA_INTERESTS: {{ profile.data_interests }}<br>
+        </div>
+    {% endif %}
+    {% if plan is not None %}
+        <div>
+            PLAN_ITEMS: {{ plan.items }}<br>
+        </div>
+    {% endif %}
+    <div class="mt-3 small" style="opacity: 0.75;">
+        Conversation ID: {{ request.session.agent_conversation_id|default:"None" }}
     </div>
 </div>
-{% endif %}
+
+
+
+
