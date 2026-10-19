@@ -18,6 +18,7 @@ class AgenticAI:
             AGENT_DB = Path(settings.BASE_DIR) / "agent_sessions.sqlite3"
             session = SQLiteSession(conversation_id, AGENT_DB)
 
+            # test
             # result = Runner.run_sync(test_agent, "call broken tool", session=session, hooks=self._HOOKS)
             # output = result.final_output
 
