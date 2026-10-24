@@ -26,6 +26,7 @@ class AgenticAI:
             if self._session.get("auth_guardrail") is None:
                 if str(prompt).upper() == "CSCI8250":
                     self._session["auth_guardrail"] = True
+                    prompt = ""
             
             if self._session.get("auth_guardrail"):
                 result = Runner.run_sync(safety_guard_agent, prompt, session=ai_session, hooks=self._HOOKS)

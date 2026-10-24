@@ -1,4 +1,5 @@
-from agents import Agent, WebSearchTool, function_tool
+from agents import Agent, WebSearchTool, function_tool, ModelSettings
+from openai.types.shared import Reasoning
 from pydantic import BaseModel
 
 class TripProfile(BaseModel):
@@ -34,7 +35,7 @@ auth_guard_agent = Agent(
         "Otherwise set is_safe_and_relavant = True."
     ),
     output_type=SafetyCheckOut,
-    model="gpt-5.6-luna",
+    model="gpt-6-luna"
 )
 
 safety_guard_agent = Agent(
@@ -44,7 +45,7 @@ safety_guard_agent = Agent(
         "set is_safe_and_relavant = False and explain briefly in reasoning. Otherwise set is_safe_and_relavant = True."
     ),
     output_type=SafetyCheckOut,
-    model="gpt-5.6-luna",
+    model="gpt-6-luna"
 )
 
 
@@ -63,7 +64,7 @@ profile_agent = Agent(
         "If you have all the necessary information ctrl_status should be COMPLETE, otherwise ctrl_status is NOTCOMPLETE."
     ),
     output_type=TripProfile,
-    model="gpt-5.6-luna",
+    model="gpt-6-astra"
 )
 
 formatter_agent = Agent(
@@ -73,7 +74,7 @@ formatter_agent = Agent(
         "Include the estimated total cost at the bottom.\n"
     ),
     output_type=HTMLOutput,
-    model="gpt-5.6-luna",
+    model="gpt-6-luna"
 )
 
 planner_agent = Agent(
@@ -117,3 +118,6 @@ test_agent = Agent(
 # # end guardrail
 
 # "Get one photo of the city and put the URL in city_url.  Make sure the URL is valid.\n"
+
+    # model_settings=ModelSettings(
+    #     reasoning=Reasoning(effort="medium"))
