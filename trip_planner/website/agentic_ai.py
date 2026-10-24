@@ -34,7 +34,7 @@ class AgenticAI:
                 if guardrail.is_safe_and_relavant:
                     result = Runner.run_sync(profile_agent, prompt, session=ai_session, hooks=self._HOOKS)
                     self.Profile = result.final_output_as(TripProfile)
-                    if self.Profile.ctrl_status == "COMPLETE" and self.Profile.ctrl_instructions == "":
+                    if self.Profile.ctrl_status == "COMPLETE":
                         self.build_trip(ai_session)
                 else:
                     self.Profile = TripProfile(ctrl_status="NOTCOMPLETE", ctrl_instructions=f"Inappropriate Prompt: {guardrail.reasoning}",

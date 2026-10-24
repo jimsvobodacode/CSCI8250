@@ -86,8 +86,8 @@ planner_agent = Agent(
         "Limit the number of PlanItems to 3 items."
     ),
     output_type=PlanItems,
-    model="gpt-5.6-luna",
-    tools=[WebSearchTool()],
+    model="gpt-6-astra"
+    # tools=[WebSearchTool()],
     #handoffs=[formatter_agent]
 )
 
