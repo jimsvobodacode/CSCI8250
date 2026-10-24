@@ -13,18 +13,16 @@ def index(request):
 @require_POST
 def aisession(request):
     form = IndexForm(request.POST)
-    profile = None
     if form.is_valid():
-        ai = AgenticAI()
+        ai = AgenticAI(request)
         ai.Process(get_conversation_id(request), form.cleaned_data["prompt"])
-        profile = ai.Profile
-        plan = ai.PlanItems
-    return render(request, "results.html", {"form": form, "profile": profile, "plan": plan})
+    return render(request, "results.html", {"form": form, "profile": ai.Profile, "planItems": ai.PlanItems, "planHTML": ai.PlanHTML})
 
 @require_POST
 def new_session(request):
     request.session.pop("agent_conversation_id", None)
-    # get_conversation_id(request)
+    request.session.pop("auth_guardrail", None)
+    request.session.flush()
     return redirect("/")
 
 

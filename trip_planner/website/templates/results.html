@@ -5,7 +5,11 @@
     {% if profile is not None %}
         {{ profile.ctrl_instructions }}<br>
     {% endif %}
+    {% if planHTML is not None %}
+        {{ planHTML.html|safe }}<br>
+    {% endif %}
 </div>
+<div></div>
 <div style="border: 1px solid white; margin-top: auto; padding: 1rem;">
     <h4 style="font-size: 0.875rem;">DIAGNOSTICS</h4>
     {% if profile is not None %}
@@ -17,9 +21,10 @@
             DATA_INTERESTS: {{ profile.data_interests }}<br>
         </div>
     {% endif %}
-    {% if plan is not None %}
+    {% if planItems is not None %}
         <div>
-            PLAN_ITEMS: {{ plan.items }}<br>
+            PLAN_ITEMS: {{ planItems.items }}<br>
+            CITY_URL: {{ planItems.city_url }}<br>
         </div>
     {% endif %}
     <div class="mt-3 small" style="opacity: 0.75;">

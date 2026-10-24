@@ -15,6 +15,10 @@ class PlanItem(BaseModel):
 
 class PlanItems(BaseModel):
     items: list[PlanItem]
+    # city_url: str
+
+class HTMLOutput(BaseModel):
+    html: str
 
 class SafetyCheckOut(BaseModel):
     is_safe_and_relavant: bool
@@ -62,6 +66,16 @@ profile_agent = Agent(
     model="gpt-5.6-luna",
 )
 
+formatter_agent = Agent(
+    name="formatter",
+    instructions=(
+        "Turn the activity list into a summary formatted in html to be displayed inside a div.\n"
+        "Include the estimated total cost at the bottom.\n"
+    ),
+    output_type=HTMLOutput,
+    model="gpt-5.6-luna",
+)
+
 planner_agent = Agent(
     name="planner",
     instructions=(
@@ -73,7 +87,8 @@ planner_agent = Agent(
     ),
     output_type=PlanItems,
     model="gpt-5.6-luna",
-    # tools=[WebSearchTool()],
+    tools=[WebSearchTool()],
+    #handoffs=[formatter_agent]
 )
 
 
@@ -100,3 +115,5 @@ test_agent = Agent(
 #         tripwire_triggered=not final_output.is_safe_and_relavant,
 #     )
 # # end guardrail
+
+# "Get one photo of the city and put the URL in city_url.  Make sure the URL is valid.\n"
